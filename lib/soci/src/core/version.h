@@ -1,0 +1,12 @@
+
+
+#ifndef SOCI_VERSION_HPP
+#define SOCI_VERSION_HPP
+
+
+#define SOCI_VERSION 300201
+
+
+#define SOCI_LIB_VERSION "3_2_2"
+
+#endif // SOCI_VERSION_HPP
