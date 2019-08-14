@@ -2,7 +2,7 @@
 
 
 #include "overlay/Peer.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 
 namespace viichain
 {
@@ -21,10 +21,10 @@ class OverlayManager
 
                 virtual void ledgerClosed(uint32_t lastClosedledgerSeq) = 0;
 
-            virtual void broadcastMessage(StellarMessage const& msg,
+            virtual void broadcastMessage(VIIMessage const& msg,
                                   bool force = false) = 0;
 
-                    virtual void recvFloodedMsg(StellarMessage const& msg,
+                    virtual void recvFloodedMsg(VIIMessage const& msg,
                                 Peer::pointer peer) = 0;
 
         virtual std::vector<Peer::pointer> getRandomAuthenticatedPeers() = 0;

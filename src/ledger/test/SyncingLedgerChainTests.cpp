@@ -15,8 +15,8 @@ LedgerCloseData
 makeLedgerCloseData(uint32_t ledgerSeq)
 {
     auto txSet = std::make_shared<TxSetFrame>(sha256("a"), TransactionSet{});
-    auto sv = StellarValue{};
-    sv.ext.v(STELLAR_VALUE_BASIC);
+    auto sv = VIIValue{};
+    sv.ext.v(VII_VALUE_BASIC);
     sv.txSetHash = txSet->getContentsHash();
     return LedgerCloseData{ledgerSeq, txSet, sv};
 }

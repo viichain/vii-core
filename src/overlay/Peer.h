@@ -4,7 +4,7 @@
 #include "util/asio.h"
 #include "database/Database.h"
 #include "overlay/PeerBareAddress.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/NonCopyable.h"
 #include "util/Timer.h"
 #include "xdrpp/message.h"
@@ -85,26 +85,26 @@ class Peer : public std::enable_shared_from_this<Peer>,
     OverlayMetrics& getOverlayMetrics();
 
     bool shouldAbort() const;
-    void recvMessage(StellarMessage const& msg);
+    void recvMessage(VIIMessage const& msg);
     void recvMessage(AuthenticatedMessage const& msg);
     void recvMessage(xdr::msg_ptr const& xdrBytes);
 
-    virtual void recvError(StellarMessage const& msg);
+    virtual void recvError(VIIMessage const& msg);
     void updatePeerRecordAfterEcho();
     void updatePeerRecordAfterAuthentication();
-    void recvAuth(StellarMessage const& msg);
-    void recvDontHave(StellarMessage const& msg);
-    void recvGetPeers(StellarMessage const& msg);
+    void recvAuth(VIIMessage const& msg);
+    void recvDontHave(VIIMessage const& msg);
+    void recvGetPeers(VIIMessage const& msg);
     void recvHello(Hello const& elo);
-    void recvPeers(StellarMessage const& msg);
+    void recvPeers(VIIMessage const& msg);
 
-    void recvGetTxSet(StellarMessage const& msg);
-    void recvTxSet(StellarMessage const& msg);
-    void recvTransaction(StellarMessage const& msg);
-    void recvGetSCPQuorumSet(StellarMessage const& msg);
-    void recvSCPQuorumSet(StellarMessage const& msg);
-    void recvSCPMessage(StellarMessage const& msg);
-    void recvGetSCPState(StellarMessage const& msg);
+    void recvGetTxSet(VIIMessage const& msg);
+    void recvTxSet(VIIMessage const& msg);
+    void recvTransaction(VIIMessage const& msg);
+    void recvGetSCPQuorumSet(VIIMessage const& msg);
+    void recvSCPQuorumSet(VIIMessage const& msg);
+    void recvSCPMessage(VIIMessage const& msg);
+    void recvGetSCPState(VIIMessage const& msg);
 
     void sendHello();
     void sendAuth();
@@ -143,7 +143,7 @@ class Peer : public std::enable_shared_from_this<Peer>,
     void sendErrorAndDrop(ErrorCode error, std::string const& message,
                           DropMode dropMode);
 
-    void sendMessage(StellarMessage const& msg);
+    void sendMessage(VIIMessage const& msg);
 
     PeerRole
     getRole() const

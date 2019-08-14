@@ -92,7 +92,7 @@ struct DontHave
     uint256 reqHash;
 };
 
-union StellarMessage switch (MessageType type)
+union VIIMessage switch (MessageType type)
 {
 case ERROR_MSG:
     Error error;
@@ -131,7 +131,7 @@ case 0:
     struct
 {
    uint64 sequence;
-   StellarMessage message;
+   VIIMessage message;
    HmacSha256Mac mac;
     } v0;
 };

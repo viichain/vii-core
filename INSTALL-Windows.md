@@ -79,7 +79,7 @@ Note that you can (and should) install the Windows version of postgres even when
 
 # Basic Installation
 
-- `git clone PATH_TO_STELLAR_CORE`
+- `git clone PATH_TO_VII_CORE`
 - `git submodule init`
 - `git submodule update`
 - Open the solution `Builds\VisualStudio\vii-core.sln`

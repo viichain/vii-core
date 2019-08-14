@@ -49,7 +49,7 @@ GetHistoryArchiveStateWork::doWork()
                 CLOG(ERROR, "History") << "OR";
                 CLOG(ERROR, "History") << POSSIBLY_CORRUPTED_HISTORY;
                 CLOG(ERROR, "History") << "OR";
-                CLOG(ERROR, "History") << UPGRADE_STELLAR_CORE;
+                CLOG(ERROR, "History") << UPGRADE_VII_CORE;
                 return State::WORK_FAILURE;
             }
         }

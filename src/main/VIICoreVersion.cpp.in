@@ -1,4 +1,4 @@
 #include "main/VIICoreVersion.h"
 
-const std::string STELLAR_CORE_VERSION = "%%VERSION%%";
+const std::string VII_CORE_VERSION = "%%VERSION%%";
 

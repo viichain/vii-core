@@ -13,7 +13,7 @@
 
 namespace viichain
 {
-Floodgate::FloodRecord::FloodRecord(StellarMessage const& msg, uint32_t ledger,
+Floodgate::FloodRecord::FloodRecord(VIIMessage const& msg, uint32_t ledger,
                                     Peer::pointer peer)
     : mLedgerSeq(ledger), mMessage(msg)
 {
@@ -49,7 +49,7 @@ Floodgate::clearBelow(uint32_t currentLedger)
 }
 
 bool
-Floodgate::addRecord(StellarMessage const& msg, Peer::pointer peer)
+Floodgate::addRecord(VIIMessage const& msg, Peer::pointer peer)
 {
     if (mShuttingDown)
     {
@@ -72,7 +72,7 @@ Floodgate::addRecord(StellarMessage const& msg, Peer::pointer peer)
 }
 
 void
-Floodgate::broadcast(StellarMessage const& msg, bool force)
+Floodgate::broadcast(VIIMessage const& msg, bool force)
 {
     if (mShuttingDown)
     {

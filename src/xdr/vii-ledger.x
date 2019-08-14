@@ -7,10 +7,10 @@ namespace viichain
 
 typedef opaque UpgradeType<128>;
 
-enum StellarValueType
+enum VIIValueType
 {
-    STELLAR_VALUE_BASIC = 0,
-    STELLAR_VALUE_SIGNED = 1
+    VII_VALUE_BASIC = 0,
+    VII_VALUE_SIGNED = 1
 };
 
 struct LedgerCloseValueSignature
@@ -19,18 +19,18 @@ struct LedgerCloseValueSignature
     Signature signature; // nodeID's signature
 };
 
-struct StellarValue
+struct VIIValue
 {
     Hash txSetHash;      // transaction set to apply to previous ledger
     TimePoint closeTime; // network close time
 
                         UpgradeType upgrades<6>;
 
-        union switch (StellarValueType v)
+        union switch (VIIValueType v)
     {
-    case STELLAR_VALUE_BASIC:
+    case VII_VALUE_BASIC:
         void;
-    case STELLAR_VALUE_SIGNED:
+    case VII_VALUE_SIGNED:
         LedgerCloseValueSignature lcValueSignature;
     }
     ext;
@@ -40,7 +40,7 @@ struct LedgerHeader
 {
     uint32 ledgerVersion;    // the protocol version of the ledger
     Hash previousLedgerHash; // hash of the previous ledger header
-    StellarValue scpValue;   // what consensus agreed to
+    VIIValue scpValue;   // what consensus agreed to
     Hash txSetResultHash;    // the TransactionResultSet that led to this ledger
     Hash bucketListHash;     // hash of the ledger state
 

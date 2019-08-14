@@ -1,10 +1,10 @@
 % vii-core(1)
-% Stellar Development Foundation
+% vii Development Foundation
 %
 
 # NAME
 
-vii-core - Core daemon for Stellar payment network
+vii-core - Core daemon for vii payment network
 
 # SYNOPSYS
 
@@ -12,11 +12,11 @@ vii-core [OPTIONS]
 
 # DESCRIPTION
 
-Stellar is a decentralized, federated peer-to-peer network that allows
+VII is a decentralized, federated peer-to-peer network that allows
 people to send payments in any asset anywhere in the world
 instantaneously, and with minimal fee. `vii-core` is the core
 component of this network. `vii-core` is a C++ implementation of
-the Stellar Consensus Protocol configured to construct a chain of
+the vii Consensus Protocol configured to construct a chain of
 ledgers that are guaranteed to be in agreement across all the
 participating nodes at all times.
 
@@ -47,7 +47,7 @@ vii-core.cfg
 :   vii-core administration guide
 
 <https://www.vii.vip>
-:   Home page of Stellar development foundation
+:   Home page of vii development foundation
 
 # BUGS
 

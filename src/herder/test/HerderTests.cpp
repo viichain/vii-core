@@ -757,11 +757,11 @@ testSCPDriver(uint32 protocolVersion, uint32_t maxTxSize, size_t expectedOps,
     auto makeTxPair = [&](HerderImpl& herder, TxSetFramePtr txSet,
                           uint64_t closeTime, bool sig) {
         txSet->sortForHash();
-        auto sv = StellarValue(txSet->getContentsHash(), closeTime,
-                               emptyUpgradeSteps, STELLAR_VALUE_BASIC);
+        auto sv = VIIValue(txSet->getContentsHash(), closeTime,
+                               emptyUpgradeSteps, VII_VALUE_BASIC);
         if (sig)
         {
-            herder.signStellarValue(root.getSecretKey(), sv);
+            herder.signVIIValue(root.getSecretKey(), sv);
         }
         auto v = xdr::xdr_to_opaque(sv);
 
@@ -824,11 +824,11 @@ testSCPDriver(uint32 protocolVersion, uint32_t maxTxSize, size_t expectedOps,
         addToCandidates(makeTxPair(herder, txSet0, 10, withSCPsignature));
 
         Value v;
-        StellarValue sv;
+        VIIValue sv;
 
         v = herder.getHerderSCPDriver().combineCandidates(1, candidates);
         xdr::xdr_from_opaque(v, sv);
-        REQUIRE(sv.ext.v() == STELLAR_VALUE_BASIC);
+        REQUIRE(sv.ext.v() == VII_VALUE_BASIC);
         REQUIRE(sv.closeTime == 10);
         REQUIRE(sv.txSetHash == txSet0->getContentsHash());
 
@@ -837,7 +837,7 @@ testSCPDriver(uint32 protocolVersion, uint32_t maxTxSize, size_t expectedOps,
         addToCandidates(makeTxPair(herder, txSet1, 5, withSCPsignature));
         v = herder.getHerderSCPDriver().combineCandidates(1, candidates);
         xdr::xdr_from_opaque(v, sv);
-        REQUIRE(sv.ext.v() == STELLAR_VALUE_BASIC);
+        REQUIRE(sv.ext.v() == VII_VALUE_BASIC);
         REQUIRE(sv.closeTime == 10);
         REQUIRE(sv.txSetHash == txSet1->getContentsHash());
 
@@ -852,7 +852,7 @@ testSCPDriver(uint32 protocolVersion, uint32_t maxTxSize, size_t expectedOps,
 
                 v = herder.getHerderSCPDriver().combineCandidates(1, candidates);
         xdr::xdr_from_opaque(v, sv);
-        REQUIRE(sv.ext.v() == STELLAR_VALUE_BASIC);
+        REQUIRE(sv.ext.v() == VII_VALUE_BASIC);
         REQUIRE(sv.closeTime == 20);
         REQUIRE(sv.txSetHash == biggestTxSet->getContentsHash());
         REQUIRE(biggestTxSet->sizeOp() == expectedOps);
@@ -867,7 +867,7 @@ testSCPDriver(uint32 protocolVersion, uint32_t maxTxSize, size_t expectedOps,
             addToCandidates(makeTxPair(herder, txSetL2, 20, withSCPsignature));
             v = herder.getHerderSCPDriver().combineCandidates(1, candidates);
             xdr::xdr_from_opaque(v, sv);
-            REQUIRE(sv.ext.v() == STELLAR_VALUE_BASIC);
+            REQUIRE(sv.ext.v() == VII_VALUE_BASIC);
             REQUIRE(sv.txSetHash == txSetL2->getContentsHash());
         }
     }
@@ -911,10 +911,10 @@ testSCPDriver(uint32 protocolVersion, uint32_t maxTxSize, size_t expectedOps,
             if (withSCPsignature)
             {
                 auto p = makeTxPair(herder, txSet0, ct, withSCPsignature);
-                StellarValue sv;
+                VIIValue sv;
                 xdr::xdr_from_opaque(p.first, sv);
 
-                auto checkInvalid = [&](StellarValue const& sv) {
+                auto checkInvalid = [&](VIIValue const& sv) {
                     auto v = xdr::xdr_to_opaque(sv);
                     REQUIRE(scp.validateValue(seq, v, true) ==
                             SCPDriver::kInvalidValue);

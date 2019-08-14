@@ -104,11 +104,11 @@ TEST_CASE("quorum tracker", "[quorum][herder]")
     auto makeValue = [&](int i) {
         auto const& lcl = app->getLedgerManager().getLastClosedLedgerHeader();
         auto txSet = std::make_shared<TxSetFrame>(lcl.hash);
-        auto sv = StellarValue{txSet->getContentsHash(),
+        auto sv = VIIValue{txSet->getContentsHash(),
                                lcl.header.scpValue.closeTime + i,
-                               emptyUpgradeSteps, STELLAR_VALUE_BASIC};
+                               emptyUpgradeSteps, VII_VALUE_BASIC};
         auto v = xdr::xdr_to_opaque(sv);
-        herder->signStellarValue(valSigner, sv);
+        herder->signVIIValue(valSigner, sv);
         auto vSigned = xdr::xdr_to_opaque(sv);
 
         return ValuesTxSet{v, vSigned, txSet};

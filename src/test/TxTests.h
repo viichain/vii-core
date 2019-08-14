@@ -3,7 +3,7 @@
 
 #include "crypto/SecretKey.h"
 #include "herder/LedgerCloseData.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "test/TestPrinter.h"
 #include "util/optional.h"
 

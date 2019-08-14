@@ -7,7 +7,7 @@
 #include "main/Application.h"
 #include "medida/metrics_registry.h"
 #include "overlay/OverlayManager.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "overlay/Tracker.h"
 #include "util/Logging.h"
 #include "xdrpp/marshal.h"

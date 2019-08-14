@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/types.h"
 
 #include <memory>
@@ -162,7 +162,7 @@ class TransactionFrame
 
         bool apply(Application& app, AbstractLedgerTxn& ltx);
 
-    StellarMessage toStellarMessage() const;
+    VIIMessage toVIIMessage() const;
 
     LedgerTxnEntry loadAccount(AbstractLedgerTxn& ltx,
                                LedgerTxnHeader const& header,

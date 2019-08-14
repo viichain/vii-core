@@ -3,7 +3,7 @@
 
 #include "database/DatabaseTypeSpecificOperation.h"
 #include "medida/timer_context.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/NonCopyable.h"
 #include "util/Timer.h"
 #include <set>

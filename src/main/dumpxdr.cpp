@@ -268,10 +268,10 @@ signtxn(std::string const& filename, std::string netId, bool base64)
     try
     {
         if (netId.empty())
-            netId = getenv("STELLAR_NETWORK_ID");
+            netId = getenv("VII_NETWORK_ID");
         if (netId.empty())
             throw std::runtime_error("missing --netid argument or "
-                                     "STELLAR_NETWORK_ID environment variable");
+                                     "VII_NETWORK_ID environment variable");
 
         const bool txn_stdin = filename == "-" || filename.empty();
 

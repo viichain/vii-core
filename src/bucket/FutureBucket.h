@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include <cereal/cereal.hpp>
 #include <future>
 #include <memory>

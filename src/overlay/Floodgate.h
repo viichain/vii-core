@@ -2,7 +2,7 @@
 
 
 #include "overlay/Peer.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include <map>
 
 namespace medida
@@ -21,10 +21,10 @@ class Floodgate
         typedef std::shared_ptr<FloodRecord> pointer;
 
         uint32_t mLedgerSeq;
-        StellarMessage mMessage;
+        VIIMessage mMessage;
         std::set<std::string> mPeersTold;
 
-        FloodRecord(StellarMessage const& msg, uint32_t ledger,
+        FloodRecord(VIIMessage const& msg, uint32_t ledger,
                     Peer::pointer peer);
     };
 
@@ -37,9 +37,9 @@ class Floodgate
   public:
     Floodgate(Application& app);
         void clearBelow(uint32_t currentLedger);
-        bool addRecord(StellarMessage const& msg, Peer::pointer fromPeer);
+        bool addRecord(VIIMessage const& msg, Peer::pointer fromPeer);
 
-    void broadcast(StellarMessage const& msg, bool force);
+    void broadcast(VIIMessage const& msg, bool force);
 
         std::set<Peer::pointer> getPeersKnows(Hash const& h);
 

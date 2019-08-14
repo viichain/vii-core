@@ -7,7 +7,7 @@
 #include "ledger/LedgerManager.h"
 #include "main/Application.h"
 #include "main/Config.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/Fs.h"
 #include "util/LogSlowExecution.h"
 #include "util/Logging.h"

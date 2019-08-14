@@ -48,7 +48,7 @@ class HerderImpl : public Herder
         return mHerderSCPDriver;
     }
 
-    void valueExternalized(uint64 slotIndex, StellarValue const& value);
+    void valueExternalized(uint64 slotIndex, VIIValue const& value);
     void emitEnvelope(SCPEnvelope const& envelope);
 
     TransactionQueue::AddResult
@@ -97,8 +97,8 @@ class HerderImpl : public Herder
         bool verifyEnvelope(SCPEnvelope const& envelope);
         void signEnvelope(SecretKey const& s, SCPEnvelope& envelope);
 
-        bool verifyStellarValueSignature(StellarValue const& sv);
-        void signStellarValue(SecretKey const& s, StellarValue& sv);
+        bool verifyVIIValueSignature(VIIValue const& sv);
+        void signVIIValue(SecretKey const& s, VIIValue& sv);
 
   private:
                 bool checkCloseTime(SCPEnvelope const& envelope, bool enforceRecent);

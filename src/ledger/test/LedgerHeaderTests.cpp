@@ -68,8 +68,8 @@ TEST_CASE("ledgerheader", "[ledger]")
         auto const& lastHash = lcl.hash;
         TxSetFramePtr txSet = make_shared<TxSetFrame>(lastHash);
 
-                StellarValue sv(txSet->getContentsHash(), 1, emptyUpgradeSteps,
-                        STELLAR_VALUE_BASIC);
+                VIIValue sv(txSet->getContentsHash(), 1, emptyUpgradeSteps,
+                        VII_VALUE_BASIC);
         LedgerCloseData ledgerData(lcl.header.ledgerSeq + 1, txSet, sv);
         app->getLedgerManager().closeLedger(ledgerData);
 

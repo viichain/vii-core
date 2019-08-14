@@ -5,7 +5,7 @@
 #include "database/DatabaseTypeSpecificOperation.h"
 #include "main/Application.h"
 #include "main/Config.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/GlobalChecks.h"
 #include "util/Logging.h"
 #include "util/Timer.h"

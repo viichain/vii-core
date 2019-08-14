@@ -2,7 +2,7 @@
 
 
 #include "history/HistoryManager.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 
 namespace viichain
 {

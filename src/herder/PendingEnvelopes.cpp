@@ -283,7 +283,7 @@ PendingEnvelopes::envelopeReady(SCPEnvelope const& envelope)
     CLOG(TRACE, "Herder") << "Envelope ready i:" << envelope.statement.slotIndex
                           << " t:" << envelope.statement.pledges.type();
 
-    StellarMessage msg;
+    VIIMessage msg;
     msg.type(SCP_MESSAGE);
     msg.envelope() = envelope;
     mApp.getOverlayManager().broadcastMessage(msg);

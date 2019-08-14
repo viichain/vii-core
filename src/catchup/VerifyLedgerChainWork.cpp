@@ -307,7 +307,7 @@ VerifyLedgerChainWork::onRun()
         CLOG(ERROR, "History") << "Catchup material failed verification - "
                                   "unsupported ledger version, propagating "
                                   "failure";
-        CLOG(ERROR, "History") << UPGRADE_STELLAR_CORE;
+        CLOG(ERROR, "History") << UPGRADE_VII_CORE;
         mVerifyLedgerChainFailure.Mark();
         return BasicWork::State::WORK_FAILURE;
     case HistoryManager::VERIFY_STATUS_ERR_BAD_HASH:

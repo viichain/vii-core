@@ -3,7 +3,7 @@
 
 #include "ledger/LedgerHashUtils.h"
 #include "ledger/LedgerManager.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/types.h"
 #include <memory>
 

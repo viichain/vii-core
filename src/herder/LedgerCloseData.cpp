@@ -14,7 +14,7 @@ namespace viichain
 {
 
 LedgerCloseData::LedgerCloseData(uint32_t ledgerSeq, TxSetFramePtr txSet,
-                                 StellarValue const& v)
+                                 VIIValue const& v)
     : mLedgerSeq(ledgerSeq), mTxSet(txSet), mValue(v)
 {
     Value x;
@@ -24,12 +24,12 @@ LedgerCloseData::LedgerCloseData(uint32_t ledgerSeq, TxSetFramePtr txSet,
 }
 
 std::string
-viiValueToString(Config const& c, StellarValue const& sv)
+viiValueToString(Config const& c, VIIValue const& sv)
 {
     std::stringstream res;
 
     res << "[";
-    if (sv.ext.v() == STELLAR_VALUE_SIGNED)
+    if (sv.ext.v() == VII_VALUE_SIGNED)
     {
         res << " SIGNED@" << c.toShortString(sv.ext.lcValueSignature().nodeID);
     }

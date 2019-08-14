@@ -2,7 +2,7 @@
 title: Integration with other services
 ---
 
-vii-core is at the bottom of the Stellar stack, many other services can be
+vii-core is at the bottom of the vii stack, many other services can be
  built on top of it.
 
  Example of such services include Horizon, a service to assist with
@@ -46,7 +46,7 @@ As a consequence, a custom view has many advantages:
 * it's minimalist ; ie, it only contains what the application needs
 * it's efficient, data is stored the way the application needs it (indexed, in memory, etc)
 * it's easy to reason about ledgers
-* it's easy to mix "native Stellar" data with non native data (such as internal customer information) and keep those consistent
+* it's easy to mix "native VII" data with non native data (such as internal customer information) and keep those consistent
 * for more demanding applications, custom views can be built using a pub/sub model where data from vii-core is published and consumed by many different services
 
 ### Low resolution custom view
@@ -115,7 +115,7 @@ Running every hour means that it will need to process around 3600/5=720 worth of
 
 ### High resolution custom view
 
-A high resolution custom view allows to build the most sophisticated data model and derive complex data from the Stellar network.
+A high resolution custom view allows to build the most sophisticated data model and derive complex data from the vii network.
 
 With such view, systems like Horizon can:
 * maintain a view that cross references ledger entry changes (such as account balances) down to individual operations

@@ -22,7 +22,7 @@
 #include "main/Config.h"
 #include "medida/meter.h"
 #include "medida/metrics_registry.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "process/ProcessManager.h"
 #include "util/Logging.h"
 #include "util/Math.h"

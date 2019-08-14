@@ -2,7 +2,7 @@
 title: History
 ---
 
-Stellar Core, or vii-core, separates data into "current" and "historical."
+VII Core, or vii-core, separates data into "current" and "historical."
 
 Current data is the subject of peer-to-peer messages--consensus is only concerned with the present,
 not the past. Current data _resides_ in a local SQL database paired with each vii-core

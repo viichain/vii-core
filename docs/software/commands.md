@@ -75,7 +75,7 @@ Command options can only by placed after command.
   checkpoint from a history archive.
 * **run**: Runs vii-core service.
 * **sec-to-pub**:  Reads a secret key on standard input and outputs the
-  corresponding public key.  Both keys are in Stellar's standard
+  corresponding public key.  Both keys are in VII's standard
   base-32 ASCII format. 
 * **sign-transaction <FILE-NAME>**:  Add a digital signature to a transaction
   envelope stored in binary format in <FILE-NAME>, and send the result to
@@ -84,9 +84,9 @@ Command options can only by placed after command.
   unless <FILE-NAME> is "-" in which case the transaction envelope is read from
   standard input and the signing key is read from `/dev/tty`.  In either event,
   if the signing key appears to be coming from a terminal, vii-core
-  disables echo. Note that if you do not have a STELLAR_NETWORK_ID environment
+  disables echo. Note that if you do not have a VII_NETWORK_ID environment
   variable, then before this argument you must specify the --netid option. For
-  example, the production vii network is "`Public Global Stellar Network ;
+  example, the production vii network is "`Public Global vii Network ;
   September 2015`" while the test network is "`Test SDF Network ; September
   2015`".<br>
   Option --base64 alters the behavior to work on base64-encoded XDR rather than

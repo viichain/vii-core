@@ -43,7 +43,7 @@ When submitting changes that may impact performance, you need to also provide so
 
 Please [sign the Contributor License Agreement](https://docs.google.com/forms/d/1g7EF6PERciwn7zfmfke5Sir2n10yddGGSXyZsq98tVY/viewform).
 
-All content, comments, and pull requests must follow the [Stellar Community Guidelines](https://www.vii.vip/community-guidelines/). 
+All content, comments, and pull requests must follow the [VII Community Guidelines](https://www.vii.vip/community-guidelines/). 
 
 Submit a pull request rebased on top of master
 

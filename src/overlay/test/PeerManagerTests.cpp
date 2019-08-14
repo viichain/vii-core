@@ -6,7 +6,7 @@
 #include "overlay/OverlayManager.h"
 #include "overlay/PeerManager.h"
 #include "overlay/RandomPeerSource.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "test/TestUtils.h"
 #include "test/test.h"
 

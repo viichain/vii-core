@@ -3,7 +3,7 @@
 
 #include "lib/util/uint128_t.h"
 #include "numeric.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "xdrpp/message.h"
 #include <type_traits>
 #include <vector>

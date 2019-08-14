@@ -749,7 +749,7 @@ LedgerManagerImpl::closeLedger(LedgerCloseData const& ledgerData)
     {
         CLOG(ERROR, "Ledger")
             << "Unknown ledger version: " << header.current().ledgerVersion;
-        CLOG(ERROR, "Ledger") << UPGRADE_STELLAR_CORE;
+        CLOG(ERROR, "Ledger") << UPGRADE_VII_CORE;
         throw std::runtime_error(
             fmt::format("cannot apply ledger with not supported version: {}",
                         header.current().ledgerVersion));

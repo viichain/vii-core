@@ -6,7 +6,7 @@
 #include "overlay/LoadManager.h"
 #include "overlay/OverlayManager.h"
 #include "overlay/OverlayMetrics.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/Logging.h"
 #include "util/Math.h"
 #include "xdrpp/marshal.h"

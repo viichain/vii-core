@@ -2,7 +2,7 @@
 
 #include "crypto/SecretKey.h"
 #include "lib/util/cpptoml.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/SecretValue.h"
 #include "util/Timer.h"
 #include "util/optional.h"

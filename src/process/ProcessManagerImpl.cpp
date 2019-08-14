@@ -1,5 +1,5 @@
 
-#define STELLAR_CORE_REAL_TIMER_FOR_CERTAIN_NOT_JUST_VIRTUAL_TIME
+#define VII_CORE_REAL_TIMER_FOR_CERTAIN_NOT_JUST_VIRTUAL_TIME
 #include "process/ProcessManagerImpl.h"
 #include "util/asio.h"
 

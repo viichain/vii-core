@@ -2,7 +2,7 @@
 
 
 #include "ledger/LedgerHashUtils.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "transactions/TransactionFrame.h"
 #include <deque>
 #include <functional>

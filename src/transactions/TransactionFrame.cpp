@@ -604,10 +604,10 @@ TransactionFrame::apply(Application& app, AbstractLedgerTxn& ltx,
     return valid && applyOperations(signatureChecker, app, ltx, meta);
 }
 
-StellarMessage
-TransactionFrame::toStellarMessage() const
+VIIMessage
+TransactionFrame::toVIIMessage() const
 {
-    StellarMessage msg;
+    VIIMessage msg;
     msg.type(TRANSACTION);
     msg.transaction() = mEnvelope;
     return msg;

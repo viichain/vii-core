@@ -35,7 +35,7 @@ runWithConfig(Config cfg)
                                 cfg.FORCE_SCP = true;
     }
 
-    LOG(INFO) << "Starting vii-core " << STELLAR_CORE_VERSION;
+    LOG(INFO) << "Starting vii-core " << VII_CORE_VERSION;
     VirtualClock clock(VirtualClock::REAL_TIME);
     Application::pointer app;
     try

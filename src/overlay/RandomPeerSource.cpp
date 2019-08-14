@@ -3,7 +3,7 @@
 #include "crypto/Random.h"
 #include "database/Database.h"
 #include "main/Application.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/Logging.h"
 #include "util/Math.h"
 #include "util/must_use.h"

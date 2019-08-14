@@ -11,7 +11,7 @@
 #include "overlay/ItemFetcher.h"
 #include "overlay/OverlayManager.h"
 #include "overlay/OverlayMetrics.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/Timer.h"
 
 #include <future>
@@ -86,8 +86,8 @@ class OverlayManagerImpl : public OverlayManager
     ~OverlayManagerImpl();
 
     void ledgerClosed(uint32_t lastClosedledgerSeq) override;
-    void recvFloodedMsg(StellarMessage const& msg, Peer::pointer peer) override;
-    void broadcastMessage(StellarMessage const& msg,
+    void recvFloodedMsg(VIIMessage const& msg, Peer::pointer peer) override;
+    void broadcastMessage(VIIMessage const& msg,
                           bool force = false) override;
     void connectTo(PeerBareAddress const& address) override;
 

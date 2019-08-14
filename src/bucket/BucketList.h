@@ -2,7 +2,7 @@
 
 
 #include "bucket/FutureBucket.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "xdrpp/message.h"
 #include <future>
 

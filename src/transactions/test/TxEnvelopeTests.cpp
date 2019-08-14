@@ -1054,8 +1054,8 @@ TEST_CASE("txenvelope", "[tx][envelope]")
         txFrame = root.tx({createAccount(a1, paymentAmount)});
         txSet->add(txFrame);
 
-                StellarValue sv(txSet->getContentsHash(), 1, emptyUpgradeSteps,
-                        STELLAR_VALUE_BASIC);
+                VIIValue sv(txSet->getContentsHash(), 1, emptyUpgradeSteps,
+                        VII_VALUE_BASIC);
         LedgerCloseData ledgerData(1, txSet, sv);
         app->getLedgerManager().closeLedger(ledgerData);
 

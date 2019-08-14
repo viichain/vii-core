@@ -2,7 +2,7 @@
 
 
 #include "bucket/Bucket.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/NonCopyable.h"
 #include <memory>
 

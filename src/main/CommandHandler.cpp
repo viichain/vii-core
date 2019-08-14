@@ -542,7 +542,7 @@ CommandHandler::tx(std::string const& params, std::string& retStr)
 
             if (status == TransactionQueue::AddResult::ADD_STATUS_PENDING)
             {
-                StellarMessage msg;
+                VIIMessage msg;
                 msg.type(TRANSACTION);
                 msg.transaction() = envelope;
                 mApp.getOverlayManager().broadcastMessage(msg);

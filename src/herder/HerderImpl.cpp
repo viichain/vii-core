@@ -127,7 +127,7 @@ HerderImpl::bootstrap()
 }
 
 void
-HerderImpl::valueExternalized(uint64 slotIndex, StellarValue const& value)
+HerderImpl::valueExternalized(uint64 slotIndex, VIIValue const& value)
 {
     const int DUMP_SCP_TIMEOUT_SECONDS = 20;
 
@@ -224,7 +224,7 @@ HerderImpl::broadcast(SCPEnvelope const& e)
 {
     if (!mApp.getConfig().MANUAL_CLOSE)
     {
-        StellarMessage m;
+        VIIMessage m;
         m.type(SCP_MESSAGE);
         m.envelope() = e;
 
@@ -313,10 +313,10 @@ HerderImpl::checkCloseTime(SCPEnvelope const& envelope, bool enforceRecent)
     adjustLastCloseTime(mHerderSCPDriver.trackingSCP());
     adjustLastCloseTime(mHerderSCPDriver.lastTrackingSCP());
 
-    StellarValue sv;
+    VIIValue sv;
             auto checkCTHelper = [&](std::vector<Value> const& values) {
         return std::any_of(values.begin(), values.end(), [&](Value const& e) {
-            auto r = scpD.toStellarValue(e, sv);
+            auto r = scpD.toVIIValue(e, sv);
                         r = r && sv.closeTime >= ctCutoff;
             if (r)
             {
@@ -487,7 +487,7 @@ HerderImpl::sendSCPStateToPeer(uint32 ledgerSeq, Peer::pointer peer)
 
             for (auto const& e : envelopes)
             {
-                StellarMessage m;
+                VIIMessage m;
                 m.type(SCP_MESSAGE);
                 m.envelope() = e;
                 peer->sendMessage(m);
@@ -694,8 +694,8 @@ HerderImpl::triggerNextLedger(uint32_t ledgerSeqToTrigger)
         nextCloseTime = lcl.header.scpValue.closeTime + 1;
     }
 
-    StellarValue newProposedValue(txSetHash, nextCloseTime, emptyUpgradeSteps,
-                                  STELLAR_VALUE_BASIC);
+    VIIValue newProposedValue(txSetHash, nextCloseTime, emptyUpgradeSteps,
+                                  VII_VALUE_BASIC);
 
         auto upgrades = mUpgrades.createUpgradesFor(lcl.header);
     for (auto const& upgrade : upgrades)
@@ -726,7 +726,7 @@ HerderImpl::triggerNextLedger(uint32_t ledgerSeqToTrigger)
 
     if (lcl.header.ledgerVersion >= 11)
     {
-                signStellarValue(mApp.getConfig().NODE_SEED, newProposedValue);
+                signVIIValue(mApp.getConfig().NODE_SEED, newProposedValue);
     }
     mHerderSCPDriver.nominate(slotIndex, newProposedValue, proposedSet,
                               lcl.header.scpValue);
@@ -1224,7 +1224,7 @@ HerderImpl::updateTransactionQueue(
         auto toBroadcast = mTransactionQueue.toTxSet({});
         for (auto tx : toBroadcast->sortForApply())
         {
-            auto msg = tx->toStellarMessage();
+            auto msg = tx->toVIIMessage();
             mApp.getOverlayManager().broadcastMessage(msg);
         }
     }
@@ -1292,7 +1292,7 @@ HerderImpl::signEnvelope(SecretKey const& s, SCPEnvelope& envelope)
         mApp.getNetworkID(), ENVELOPE_TYPE_SCP, envelope.statement));
 }
 bool
-HerderImpl::verifyStellarValueSignature(StellarValue const& sv)
+HerderImpl::verifyVIIValueSignature(VIIValue const& sv)
 {
     auto b = PubKeyUtils::verifySig(
         sv.ext.lcValueSignature().nodeID, sv.ext.lcValueSignature().signature,
@@ -1302,9 +1302,9 @@ HerderImpl::verifyStellarValueSignature(StellarValue const& sv)
 }
 
 void
-HerderImpl::signStellarValue(SecretKey const& s, StellarValue& sv)
+HerderImpl::signVIIValue(SecretKey const& s, VIIValue& sv)
 {
-    sv.ext.v(STELLAR_VALUE_SIGNED);
+    sv.ext.v(VII_VALUE_SIGNED);
     sv.ext.lcValueSignature().nodeID = s.getPublicKey();
     sv.ext.lcValueSignature().signature =
         s.sign(xdr::xdr_to_opaque(mApp.getNetworkID(), ENVELOPE_TYPE_SCPVALUE,

@@ -5,7 +5,7 @@
 #include "ledger/LedgerTxnEntry.h"
 #include "ledger/LedgerTxnHeader.h"
 #include "main/Application.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "transactions/TransactionUtils.h"
 
 const uint32_t INFLATION_FREQUENCY = (60 * 60 * 24 * 7); // every 7 days

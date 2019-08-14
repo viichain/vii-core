@@ -4,7 +4,7 @@
 #include "crypto/SecretKey.h"
 #include "herder/QuorumTracker.h"
 #include "main/Config.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/HashOfHash.h"
 #include <string>
 #include <unordered_map>

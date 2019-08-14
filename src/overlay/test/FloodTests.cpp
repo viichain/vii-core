@@ -130,7 +130,7 @@ TEST_CASE("Flooding", "[flood][overlay]")
             auto tx1 = account.tx(
                 {createAccount(dest.getPublicKey(), txAmount)}, expectedSeq);
 
-                        auto msg = tx1->toStellarMessage();
+                        auto msg = tx1->toVIIMessage();
             auto res = inApp->getHerder().recvTransaction(tx1);
             REQUIRE(res == TransactionQueue::AddResult::ADD_STATUS_PENDING);
             inApp->getOverlayManager().broadcastMessage(msg);
@@ -225,8 +225,8 @@ TEST_CASE("Flooding", "[flood][overlay]")
                         auto ct = std::max<uint64>(
                 lcl.header.scpValue.closeTime + 1,
                 VirtualClock::to_time_t(inApp->getClock().now()));
-            StellarValue sv(txSet.getContentsHash(), ct, emptyUpgradeSteps,
-                            STELLAR_VALUE_BASIC);
+            VIIValue sv(txSet.getContentsHash(), ct, emptyUpgradeSteps,
+                            VII_VALUE_BASIC);
 
             SCPEnvelope envelope;
 

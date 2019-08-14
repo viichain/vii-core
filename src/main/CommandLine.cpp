@@ -748,7 +748,7 @@ runSignTransaction(CommandLineArgs const& args)
 int
 runVersion(CommandLineArgs const&)
 {
-    std::cout << STELLAR_CORE_VERSION << std::endl;
+    std::cout << VII_CORE_VERSION << std::endl;
     return 0;
 }
 

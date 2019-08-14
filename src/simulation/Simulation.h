@@ -6,7 +6,7 @@
 #include "main/Application.h"
 #include "main/Config.h"
 #include "medida/medida.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "overlay/test/LoopbackPeer.h"
 #include "simulation/LoadGenerator.h"
 #include "test/TxTests.h"

@@ -3,7 +3,7 @@
 
 #include "bucket/LedgerCmp.h"
 #include "crypto/Hex.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "util/NonCopyable.h"
 #include "util/XDRStream.h"
 #include <string>

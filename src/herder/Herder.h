@@ -7,7 +7,7 @@
 #include "herder/TransactionQueue.h"
 #include "lib/json/json-forwards.h"
 #include "overlay/Peer.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include "scp/SCP.h"
 #include "util/Timer.h"
 #include <functional>

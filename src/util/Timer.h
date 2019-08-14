@@ -153,7 +153,7 @@ class VirtualTimer : private NonMovableOrCopyable
     static void onFailureNoop(asio::error_code const&){};
 };
 
-#ifdef STELLAR_CORE_REAL_TIMER_FOR_CERTAIN_NOT_JUST_VIRTUAL_TIME
+#ifdef VII_CORE_REAL_TIMER_FOR_CERTAIN_NOT_JUST_VIRTUAL_TIME
 class RealTimer : public asio::basic_waitable_timer<std::chrono::system_clock>
 {
   public:

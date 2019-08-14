@@ -87,7 +87,7 @@ HerderSCPDriver::getState() const
 }
 
 void
-HerderSCPDriver::restoreSCPState(uint64_t index, StellarValue const& value)
+HerderSCPDriver::restoreSCPState(uint64_t index, VIIValue const& value)
 {
     mTrackingSCP = std::make_unique<ConsensusData>(index, value);
 }
@@ -122,7 +122,7 @@ HerderSCPDriver::isSlotCompatibleWithCurrentState(uint64_t slotIndex) const
 
 bool
 HerderSCPDriver::checkCloseTime(uint64_t slotIndex, uint64_t lastCloseTime,
-                                StellarValue const& b) const
+                                VIIValue const& b) const
 {
         if (b.closeTime <= lastCloseTime)
     {
@@ -144,16 +144,16 @@ HerderSCPDriver::checkCloseTime(uint64_t slotIndex, uint64_t lastCloseTime,
 }
 
 SCPDriver::ValidationLevel
-HerderSCPDriver::validateValueHelper(uint64_t slotIndex, StellarValue const& b,
+HerderSCPDriver::validateValueHelper(uint64_t slotIndex, VIIValue const& b,
                                      bool nomination) const
 {
     uint64_t lastCloseTime;
 
-    if (b.ext.v() == STELLAR_VALUE_SIGNED)
+    if (b.ext.v() == VII_VALUE_SIGNED)
     {
         if (nomination)
         {
-            if (!mHerder.verifyStellarValueSignature(b))
+            if (!mHerder.verifyVIIValueSignature(b))
             {
                 return SCPDriver::kInvalidValue;
             }
@@ -255,7 +255,7 @@ HerderSCPDriver::validateValueHelper(uint64_t slotIndex, StellarValue const& b,
 
     
     if ((!nomination || lcl.ledgerVersion < 11) &&
-        b.ext.v() != STELLAR_VALUE_BASIC)
+        b.ext.v() != VII_VALUE_BASIC)
     {
                         CLOG(TRACE, "Herder")
             << "HerderSCPDriver::validateValue"
@@ -263,7 +263,7 @@ HerderSCPDriver::validateValueHelper(uint64_t slotIndex, StellarValue const& b,
         return SCPDriver::kInvalidValue;
     }
     if (nomination &&
-        (lcl.ledgerVersion >= 11 && b.ext.v() != STELLAR_VALUE_SIGNED))
+        (lcl.ledgerVersion >= 11 && b.ext.v() != VII_VALUE_SIGNED))
     {
                 CLOG(TRACE, "Herder")
             << "HerderSCPDriver::validateValue"
@@ -306,7 +306,7 @@ SCPDriver::ValidationLevel
 HerderSCPDriver::validateValue(uint64_t slotIndex, Value const& value,
                                bool nomination)
 {
-    StellarValue b;
+    VIIValue b;
     try
     {
         xdr::xdr_from_opaque(value, b);
@@ -363,7 +363,7 @@ HerderSCPDriver::validateValue(uint64_t slotIndex, Value const& value,
 Value
 HerderSCPDriver::extractValidValue(uint64_t slotIndex, Value const& value)
 {
-    StellarValue b;
+    VIIValue b;
     try
     {
         xdr::xdr_from_opaque(value, b);
@@ -408,7 +408,7 @@ HerderSCPDriver::toShortString(PublicKey const& pk) const
 std::string
 HerderSCPDriver::getValueString(Value const& v) const
 {
-    StellarValue b;
+    VIIValue b;
     if (v.empty())
     {
         return "[:empty:]";
@@ -539,7 +539,7 @@ HerderSCPDriver::combineCandidates(uint64_t slotIndex,
 
     Hash h;
 
-    StellarValue comp(h, 0, emptyUpgradeSteps, STELLAR_VALUE_BASIC);
+    VIIValue comp(h, 0, emptyUpgradeSteps, VII_VALUE_BASIC);
 
     std::map<LedgerUpgradeType, LedgerUpgrade> upgrades;
 
@@ -549,12 +549,12 @@ HerderSCPDriver::combineCandidates(uint64_t slotIndex,
 
     Hash candidatesHash;
 
-    std::vector<StellarValue> candidateValues;
+    std::vector<VIIValue> candidateValues;
 
     for (auto const& c : candidates)
     {
         candidateValues.emplace_back();
-        StellarValue& sv = candidateValues.back();
+        VIIValue& sv = candidateValues.back();
 
         xdr::xdr_from_opaque(c, sv);
         candidatesHash ^= sha256(c);
@@ -645,12 +645,12 @@ HerderSCPDriver::combineCandidates(uint64_t slotIndex,
             "HerderSCPDriver: combineCandidates posts recvTxSet");
     }
 
-        comp.ext.v(STELLAR_VALUE_BASIC);
+        comp.ext.v(VII_VALUE_BASIC);
     return xdr::xdr_to_opaque(comp);
 }
 
 bool
-HerderSCPDriver::toStellarValue(Value const& v, StellarValue& sv)
+HerderSCPDriver::toVIIValue(Value const& v, VIIValue& sv)
 {
     try
     {
@@ -679,7 +679,7 @@ HerderSCPDriver::valueExternalized(uint64_t slotIndex, Value const& value)
         return;
     }
 
-    StellarValue b;
+    VIIValue b;
     try
     {
         xdr::xdr_from_opaque(value, b);
@@ -687,7 +687,7 @@ HerderSCPDriver::valueExternalized(uint64_t slotIndex, Value const& value)
     catch (...)
     {
                         CLOG(ERROR, "Herder") << "HerderSCPDriver::valueExternalized"
-                              << " Externalized StellarValue malformed";
+                              << " Externalized VIIValue malformed";
         CLOG(ERROR, "Herder") << REPORT_INTERNAL_BUG;
                 abort();
     }
@@ -735,9 +735,9 @@ HerderSCPDriver::logQuorumInformation(uint64_t index)
 }
 
 void
-HerderSCPDriver::nominate(uint64_t slotIndex, StellarValue const& value,
+HerderSCPDriver::nominate(uint64_t slotIndex, VIIValue const& value,
                           TxSetFramePtr proposedSet,
-                          StellarValue const& previousValue)
+                          VIIValue const& previousValue)
 {
     mCurrentValue = xdr::xdr_to_opaque(value);
     mLedgerSeqNominating = static_cast<uint32_t>(slotIndex);

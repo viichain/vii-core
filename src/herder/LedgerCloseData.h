@@ -3,7 +3,7 @@
 
 #include "TxSetFrame.h"
 #include "main/Config.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include <string>
 
 namespace viichain
@@ -13,7 +13,7 @@ class LedgerCloseData
 {
   public:
     LedgerCloseData(uint32_t ledgerSeq, TxSetFramePtr txSet,
-                    StellarValue const& v);
+                    VIIValue const& v);
 
     uint32_t
     getLedgerSeq() const
@@ -25,7 +25,7 @@ class LedgerCloseData
     {
         return mTxSet;
     }
-    StellarValue const&
+    VIIValue const&
     getValue() const
     {
         return mValue;
@@ -34,10 +34,10 @@ class LedgerCloseData
   private:
     uint32_t mLedgerSeq;
     TxSetFramePtr mTxSet;
-    StellarValue mValue;
+    VIIValue mValue;
 };
 
-std::string viiValueToString(Config const& c, StellarValue const& sv);
+std::string viiValueToString(Config const& c, VIIValue const& sv);
 
 #define emptyUpgradeSteps (xdr::xvector<UpgradeType, 6>(0))
 }

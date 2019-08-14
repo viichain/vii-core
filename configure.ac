@@ -1,7 +1,7 @@
 # -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-# Copyright 2015 Stellar Development Foundation and contributors. Licensed
+# Copyright 2015 vii Development Foundation and contributors. Licensed
 # under the Apache License, Version 2.0. See the COPYING file at the root
 # of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
@@ -72,7 +72,7 @@ return !((weak1.expired()) && (weak1.lock() == nullptr));
 
 AC_ARG_ENABLE([sdfprefs],
     AS_HELP_STRING([--enable-sdfprefs],
-        [Enable build settings preferred by Stellar developers]))
+        [Enable build settings preferred by vii developers]))
 
 AS_IF([test xyes = "x$enable_sdfprefs"],
         [AM_SILENT_RULES([yes])

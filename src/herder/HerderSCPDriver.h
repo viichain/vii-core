@@ -23,7 +23,7 @@ class PendingEnvelopes;
 class SCP;
 class Upgrades;
 class VirtualTimer;
-struct StellarValue;
+struct VIIValue;
 struct SCPEnvelope;
 
 class HerderSCPDriver : public SCPDriver
@@ -32,8 +32,8 @@ class HerderSCPDriver : public SCPDriver
     struct ConsensusData
     {
         uint64_t mConsensusIndex;
-        StellarValue mConsensusValue;
-        ConsensusData(uint64_t index, StellarValue const& b)
+        VIIValue mConsensusValue;
+        ConsensusData(uint64_t index, VIIValue const& b)
             : mConsensusIndex(index), mConsensusValue(b)
         {
         }
@@ -60,7 +60,7 @@ class HerderSCPDriver : public SCPDriver
         return mLastTrackingSCP.get();
     }
 
-    void restoreSCPState(uint64_t index, StellarValue const& value);
+    void restoreSCPState(uint64_t index, VIIValue const& value);
 
         uint32
     lastConsensusLedgerIndex() const
@@ -103,8 +103,8 @@ class HerderSCPDriver : public SCPDriver
                             std::set<Value> const& candidates) override;
     void valueExternalized(uint64_t slotIndex, Value const& value) override;
 
-            void nominate(uint64_t slotIndex, StellarValue const& value,
-                  TxSetFramePtr proposedSet, StellarValue const& previousValue);
+            void nominate(uint64_t slotIndex, VIIValue const& value,
+                  TxSetFramePtr proposedSet, VIIValue const& previousValue);
 
     SCPQuorumSetPtr getQSet(Hash const& qSetHash) override;
 
@@ -122,10 +122,10 @@ class HerderSCPDriver : public SCPDriver
 
     optional<VirtualClock::time_point> getPrepareStart(uint64_t slotIndex);
 
-            bool toStellarValue(Value const& v, StellarValue& sv);
+            bool toVIIValue(Value const& v, VIIValue& sv);
 
         bool checkCloseTime(uint64_t slotIndex, uint64_t lastCloseTime,
-                        StellarValue const& b) const;
+                        VIIValue const& b) const;
 
   private:
     Application& mApp;
@@ -178,7 +178,7 @@ class HerderSCPDriver : public SCPDriver
     void stateChanged();
 
     SCPDriver::ValidationLevel validateValueHelper(uint64_t slotIndex,
-                                                   StellarValue const& sv,
+                                                   VIIValue const& sv,
                                                    bool nomination) const;
 
             bool isSlotCompatibleWithCurrentState(uint64_t slotIndex) const;

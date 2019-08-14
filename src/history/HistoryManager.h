@@ -3,7 +3,7 @@
 
 #include "history/HistoryArchive.h"
 #include "history/InferredQuorum.h"
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 #include <functional>
 #include <memory>
 

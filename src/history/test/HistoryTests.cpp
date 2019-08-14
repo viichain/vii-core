@@ -509,8 +509,8 @@ TEST_CASE("Catchup non-initentry buckets to initentry-supporting works",
                 << txSet->size(lm.getLastClosedLedgerHeader().header)
                 << " txs (txhash:" << hexAbbrev(txSet->getContentsHash())
                 << ")";
-            StellarValue sv(txSet->getContentsHash(), closeTime, upgrades,
-                            STELLAR_VALUE_BASIC);
+            VIIValue sv(txSet->getContentsHash(), closeTime, upgrades,
+                            VII_VALUE_BASIC);
             lm.closeLedger(LedgerCloseData(ledgerSeq, txSet, sv));
         }
 

@@ -237,7 +237,7 @@ class OverlayManagerTests
         auto c = TestAccount{*app, getAccount("c")};
         auto d = TestAccount{*app, getAccount("d")};
 
-        StellarMessage AtoC = a.tx({payment(b, 10)})->toStellarMessage();
+        VIIMessage AtoC = a.tx({payment(b, 10)})->toVIIMessage();
         auto i = 0;
         for (auto p : pm.mOutboundPeers.mAuthenticated)
             if (i++ == 2)
@@ -247,7 +247,7 @@ class OverlayManagerTests
         REQUIRE(sentCounts(pm) == expected);
         pm.broadcastMessage(AtoC);
         REQUIRE(sentCounts(pm) == expected);
-        StellarMessage CtoD = c.tx({payment(d, 10)})->toStellarMessage();
+        VIIMessage CtoD = c.tx({payment(d, 10)})->toVIIMessage();
         pm.broadcastMessage(CtoD);
         std::vector<int> expectedFinal{2, 2, 1, 2, 2};
         REQUIRE(sentCounts(pm) == expectedFinal);

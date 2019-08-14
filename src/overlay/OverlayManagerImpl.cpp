@@ -757,14 +757,14 @@ OverlayManagerImpl::getRandomAuthenticatedPeers()
 }
 
 void
-OverlayManagerImpl::recvFloodedMsg(StellarMessage const& msg,
+OverlayManagerImpl::recvFloodedMsg(VIIMessage const& msg,
                                    Peer::pointer peer)
 {
     mFloodGate.addRecord(msg, peer);
 }
 
 void
-OverlayManagerImpl::broadcastMessage(StellarMessage const& msg, bool force)
+OverlayManagerImpl::broadcastMessage(VIIMessage const& msg, bool force)
 {
     mOverlayMetrics.mMessagesBroadcast.Mark();
     mFloodGate.broadcast(msg, force);

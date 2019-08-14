@@ -45,7 +45,7 @@ struct CfgDirGuard
 };
 
 std::string
-msgSummary(StellarMessage const& m)
+msgSummary(VIIMessage const& m)
 {
     xdr::detail::Printer p(0);
     xdr::archive(p, m.type(), nullptr);
@@ -53,7 +53,7 @@ msgSummary(StellarMessage const& m)
 }
 
 bool
-tryRead(XDRInputFileStream& in, StellarMessage& m)
+tryRead(XDRInputFileStream& in, VIIMessage& m)
 {
     try
     {
@@ -77,7 +77,7 @@ fuzz(std::string const& filename, el::Level logLevel,
 {
     Logging::setFmt("<fuzz>", false);
     Logging::setLogLevel(logLevel, nullptr);
-    LOG(INFO) << "Fuzzing vii-core " << STELLAR_CORE_VERSION;
+    LOG(INFO) << "Fuzzing vii-core " << VII_CORE_VERSION;
     LOG(INFO) << "Fuzz input is in " << filename;
 
     Config cfg1, cfg2;
@@ -122,7 +122,7 @@ restart:
 
     XDRInputFileStream in(MAX_MESSAGE_SIZE);
     in.open(filename);
-    StellarMessage msg;
+    VIIMessage msg;
     size_t i = 0;
     while (tryRead(in, msg))
     {
@@ -156,12 +156,12 @@ genfuzz(std::string const& filename)
     LOG(INFO) << "Writing " << n << "-message random fuzz file " << filename;
     XDROutputFileStream out;
     out.open(filename);
-    autocheck::generator<StellarMessage> gen;
+    autocheck::generator<VIIMessage> gen;
     for (size_t i = 0; i < n; ++i)
     {
         try
         {
-            StellarMessage m(gen(10));
+            VIIMessage m(gen(10));
             out.writeOne(m);
             LOG(INFO) << "Message " << i << ": " << msgSummary(m);
         }

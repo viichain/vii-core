@@ -163,7 +163,7 @@ Tracker::listen(const SCPEnvelope& env)
 {
     mLastSeenSlotIndex = std::max(env.statement.slotIndex, mLastSeenSlotIndex);
 
-    StellarMessage m;
+    VIIMessage m;
     m.type(SCP_MESSAGE);
     m.envelope() = env;
     mWaitingEnvelopes.push_back(

@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "overlay/StellarXDR.h"
+#include "overlay/VIIXDR.h"
 
 namespace viichain
 {

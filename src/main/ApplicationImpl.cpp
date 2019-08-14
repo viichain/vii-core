@@ -1,5 +1,5 @@
 
-#define STELLAR_CORE_REAL_TIMER_FOR_CERTAIN_NOT_JUST_VIRTUAL_TIME
+#define VII_CORE_REAL_TIMER_FOR_CERTAIN_NOT_JUST_VIRTUAL_TIME
 #include "ApplicationImpl.h"
 
 #include "util/asio.h"
@@ -235,7 +235,7 @@ ApplicationImpl::getJsonInfo()
 
     auto& info = root["info"];
 
-    info["build"] = STELLAR_CORE_VERSION;
+    info["build"] = VII_CORE_VERSION;
     info["protocol_version"] = getConfig().LEDGER_PROTOCOL_VERSION;
     info["state"] = getStateHuman();
     info["startedOn"] = VirtualClock::pointToISOString(mStartedOn);

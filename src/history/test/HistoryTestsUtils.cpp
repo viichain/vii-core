@@ -471,8 +471,8 @@ CatchupSimulation::generateRandomLedger(uint32_t version)
         upgrades.push_back(UpgradeType{v.begin(), v.end()});
     }
 
-    StellarValue sv(txSet->getContentsHash(), closeTime, upgrades,
-                    STELLAR_VALUE_BASIC);
+    VIIValue sv(txSet->getContentsHash(), closeTime, upgrades,
+                    VII_VALUE_BASIC);
     mLedgerCloseDatas.emplace_back(ledgerSeq, txSet, sv);
     lm.closeLedger(mLedgerCloseDatas.back());
 
